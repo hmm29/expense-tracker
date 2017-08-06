@@ -4,7 +4,8 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
       logger = require('morgan'),
-      config = require('./config/main');
+      config = require('./config/main'),
+      router = require('./server/router');
 
 // connect to the MongoDB database
 mongoose.connect(config.database);
@@ -28,7 +29,9 @@ app.use(function(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+router(app);
 
-
-
-
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', function (req, res) {
+  res.send('hello world')
+})

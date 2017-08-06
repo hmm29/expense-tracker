@@ -90,8 +90,6 @@ exports.register = function(req, res, next) {
 //========================================
 // Authorization Middleware
 //========================================
-
-// Role authorization check
 exports.roleAuthorization = function(role) {
   return function(req, res, next) {
     const user = req.user;
