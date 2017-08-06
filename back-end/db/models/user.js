@@ -22,9 +22,6 @@ const UserSchema = new Schema({
       enum: ['regular', 'admin'],
       default: 'Member'
     },
-    photoUrl: {
-      type: String,
-    },
     resetPasswordToken: { type: String },
     resetPasswordExpires: { type: Date }
   },
