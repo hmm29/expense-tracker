@@ -6,6 +6,9 @@ const express = require('express'),
       logger = require('morgan'),
       config = require('./config/main');
 
+// connect to the MongoDB database
+mongoose.connect(config.database);
+
 // start the server
 const server = app.listen(config.port);
 console.log('Your server is running on port ' + config.port + '.');
@@ -22,7 +25,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-// connect to the MongoDB database
-mongoose.connect(config.database);
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+
 
 
